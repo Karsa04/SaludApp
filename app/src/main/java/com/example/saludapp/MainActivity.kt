@@ -1,5 +1,6 @@
 package com.example.saludapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btnHello:androidx.appcompat.widget.AppCompatButton= findViewById(R.id.btnHello)
+
         val etName:EditText =findViewById(R.id.etName)
 
 
@@ -25,12 +27,15 @@ class MainActivity : AppCompatActivity() {
                //Log.i("test", "Botón pulsado ")
                val name =etName.text.toString()
               // Toast.makeText(this,"Hola $name!", Toast.LENGTH_LONG).show()
-               if (name.isNotEmpty()){
+               /*if (name.isNotEmpty()){
                    Snackbar.make(btnHello, "Hola $name!", Snackbar.LENGTH_SHORT)
                        .setAnchorView(btnHello)
                        .setAction("Reset") {etName.setText(null) }
                        .show()
-               }
+               }*/
+               val intentGA = Intent(this, MainActivity2::class.java)
+               intentGA.putExtra("EXTRA_NAME", name)
+               startActivity(intentGA)
 
            }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
